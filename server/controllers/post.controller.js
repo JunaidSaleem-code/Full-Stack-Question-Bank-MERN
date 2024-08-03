@@ -1,9 +1,9 @@
-import PostModel from "../models/post.model";
+import PostModal from "../models/post.model.js";
 
-const CreatePost = async(req,res) =>{
+const createPost = async(req,res, next) =>{
     try {
         const {topic,question,answer} = req.body;
-        const responseData = await Postmodel.create({
+        const responseData = await PostModal.create({
         topic,
         question,
         answer
@@ -17,9 +17,9 @@ const CreatePost = async(req,res) =>{
     }
 }
 
-const getPosts = async(req, res)=>{
+const getPosts = async(req, res, next)=>{
     try {
-        const responseData = await PostModel.find();
+        const responseData = await PostModal.find();
         res.send({
             success : true,
             responseData,
@@ -27,12 +27,13 @@ const getPosts = async(req, res)=>{
     } catch (error) {
         console.error("Error :: createPost :: \n" + error)
     }
+    
 }
 
-const getSinglePost = async(req, res)=>{
+const getSinglePost = async(req, res , next)=>{
     try {
-        const postId = req.query;
-        const responseData = await PostModel.findbyId(postID);
+        const {postID} = req.query;
+        const responseData = await PostModal.findById(postID);
         res.send({
             success : true,
             responseData,
@@ -42,23 +43,23 @@ const getSinglePost = async(req, res)=>{
     }
 }
 
-const deletePost = async(req, res)=>{
+const deletePost = async(req, res , next)=>{
     try {
-        const postId = req.query;
-        const responseData = await PostModel.findbyIdAndDelete(postId);
+        const {postID} = req.body;
+        const responseData = await PostModal.findByIdAndDelete(postID);
         res.send({
             success : true,
-            responseData,
+            responseData
             })
     } catch (error) {
         console.error("Error :: createPost :: \n" + error)
     }
 }
 
-const updatePost = async(req, res)=>{
+const updatePost = async(req, res, next )=>{
     try {
-        const {postId, topic, question, answer} = req.body;
-        const responseData = await PostModel.findbyIdAndUpdate(postId,
+        const {postID, topic, question, answer} = req.body;
+        const responseData = await PostModal.findByIdAndUpdate(postID,
             {topic,
             question,
             answer,
@@ -73,7 +74,7 @@ const updatePost = async(req, res)=>{
 }
 
 export{
-    CreatePost,
+    createPost,
     getPosts,
     getSinglePost,
     deletePost,

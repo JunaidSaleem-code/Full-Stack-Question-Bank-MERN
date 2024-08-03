@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const PostSchema = mongoose.Schema({
-    title: {
+    topic: {
         type: String,
         required: [true,"Topic is required"],
     },
@@ -14,5 +14,5 @@ const PostSchema = mongoose.Schema({
         required: [true, "Answer is required"],
 }
 })
-const PostModel = mongoose.model('QuestionPost',PostSchema);
-export default PostModel;
+const PostModal = mongoose.model('QuestionPost',PostSchema);
+export default PostModal;

@@ -1,16 +1,15 @@
 import dotenv from 'dotenv';
-dotenv.config();
 import express from 'express';
 const app = express();
 import cors from 'cors'
-import connectWithMongoDB from './db/connection.js';
+import connectWithMongoDB from './db/connection1.db.js';
+import PostRoute from './routes/post.routes.js'
 
-
-
-
-// app.use(cors({
-//     origin: ["http://localhost:3000","https://full-stack-web-question-bank.netlify.app"]
-// }));
+dotenv.config();
+app.use(cors({
+    origin: ["http://localhost:3000"]
+        // ,"https://full-stack-web-question-bank.netlify.app"]
+}));
 
 connectWithMongoDB();
 
@@ -20,7 +19,7 @@ app.use(express.json());
 // For parsing application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
-// app.use('/api/v1', PostRoute);
+app.use('/api/v1', PostRoute);
 
 app.get('/',(req,res)=>{
     res.send({
@@ -28,20 +27,6 @@ app.get('/',(req,res)=>{
         error:false,
     })
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 app.listen(8000, () => {
     console.log("Server is listening on port http://localhost:8000");
 })
