@@ -7,8 +7,8 @@ import PostRoute from './routes/post.routes.js'
 
 dotenv.config();
 app.use(cors({
-    origin: ["http://localhost:3000" ," https://full-stack-question-bank-mern-7rm3-e2kqrh47k.vercel.app/"]
-   
+    origin: ["http://localhost:3000" ," https://full-stack-question-bank-mern-7rm3.vercel.app/"]
+    
 }));
 
 connectWithMongoDB();
