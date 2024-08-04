@@ -6,9 +6,21 @@ import connectWithMongoDB from './db/connection1.db.js';
 import PostRoute from './routes/post.routes.js'
 
 dotenv.config();
-app.use(cors({
-    origin: ["http://localhost:3000" ," https://full-stack-question-bank-mern-7rm3.vercel.app"]
+// app.use(cors({
+//     origin: ["http://localhost:3000" ," https://full-stack-question-bank-mern-7rm3.vercel.app"]
     
+// }));
+const allowedOrigins = ['https://full-stack-question-bank-mern-7rm3.vercel.app'];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  }
 }));
 
 connectWithMongoDB();
