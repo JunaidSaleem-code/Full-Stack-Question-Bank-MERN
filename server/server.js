@@ -9,8 +9,10 @@ dotenv.config();
 // app.use(cors({
 //     origin: ["http://localhost:3000" ," https://full-stack-question-bank-mern-7rm3.vercel.app"]
     
-// }));
-const allowedOrigins = ['https://full-stack-question-bank-mern-7rm3.vercel.app'];
+// // }));
+// const url = process.env.REACT_APP_SERVER_URL
+// https://full-stack-question-bank-mern-7rm3-fbabvtuxw.vercel.app
+const allowedOrigins = ['https://full-stack-question-bank-mern-7rm3-fbabvtuxw.vercel.app'];
 
 app.use(cors({
   origin: function (origin, callback) {
