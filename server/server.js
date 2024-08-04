@@ -12,18 +12,37 @@ dotenv.config();
 // // }));
 // const url = process.env.REACT_APP_SERVER_URL
 // https://full-stack-question-bank-mern-7rm3-fbabvtuxw.vercel.app
-const allowedOrigins = ['https://full-stack-question-bank-mern-7rm3-fbabvtuxw.vercel.app'];
 
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.indexOf(origin) === -1) {
-      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
-      return callback(new Error(msg), false);
-    }
-    return callback(null, true);
-  }
-}));
+const allowedOrigins = [
+    'https://full-stack-question-bank-mern-7rm3-fbabvtuxw.vercel.app',
+    'https://full-stack-question-bank-mern-hmbzjyowz.vercel.app',
+  ];
+  
+  app.use(cors({
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.indexOf(origin) === -1) {
+        const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+        return callback(new Error(msg), false);
+      }
+      return callback(null, true);
+    },
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    maxAge: 3600,
+  }));
+// const allowedOrigins = ['https://full-stack-question-bank-mern-7rm3-fbabvtuxw.vercel.app'];
+
+// app.use(cors({
+//   origin: function (origin, callback) {
+//     if (!origin) return callback(null, true);
+//     if (allowedOrigins.indexOf(origin) === -1) {
+//       const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+//       return callback(new Error(msg), false);
+//     }
+//     return callback(null, true);
+//   }
+// }));
 
 connectWithMongoDB();
 
