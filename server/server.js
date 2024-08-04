@@ -7,7 +7,7 @@ import PostRoute from './routes/post.routes.js'
 
 dotenv.config();
 app.use(cors({
-    origin: ["http://localhost:3000" ," https://full-stack-question-bank-mern-7rm3.vercel.app/"]
+    origin: ["http://localhost:3000" ," https://full-stack-question-bank-mern-7rm3.vercel.app"]
     
 }));
 
