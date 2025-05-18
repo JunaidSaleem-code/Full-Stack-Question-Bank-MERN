@@ -14,7 +14,8 @@ dotenv.config();
 // https://full-stack-question-bank-mern-7rm3-fbabvtuxw.vercel.app
 
 const allowedOrigins = [
-    'https://full-stack-question-bank-mern-stack.vercel.app/',
+    'http://localhost:3000',
+    'https://full-stack-question-bank-mern-stack.vercel.app'
   ];
   
   app.use(cors({
